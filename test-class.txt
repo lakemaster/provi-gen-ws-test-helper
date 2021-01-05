@@ -1,0 +1,3 @@
+PvTrRueckgabeLeistungAbstract
+PvBRueckgabeLeistungAbstract
+	private Timestamp aenderungsZeitpunkt = null;
