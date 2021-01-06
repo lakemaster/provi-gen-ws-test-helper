@@ -6,21 +6,13 @@ import {{result_class_inc_dir}}.{{result_class}};
 public class {{helper_class_name}}
 		extends Helper<{{test_class}}, {{result_class}}> {
 
-        // @formatter:off
-	{% for attr in attributes %}
-private static final TVal<{{get_attr_type(attr[0])}}> {{attr[1].upper()}} = create("{{attr[1]}}", {{get_attr_value(get_attr_type(attr[0]))}});
-	{% endfor %}
-	// @formatter:on
-
 	@Override
 	public void init() {
 		this.testObject = new {{test_class}}();
 		this.resultObject = new {{result_class}}();
 
-		// @formatter:off
 	{% for attr in attributes %}
-	this.addAttr(new Attr<>({{ attr[1].upper() }}, this.testObject::set{{ attr[1][:1].upper()+attr[1][1:] }}, this.resultObject::get{{ attr[1][:1].upper()+attr[1][1:] }}));
+	this.addAttr(new Attr2<>("{{attr[1]}}", {{get_attr_value(get_attr_type(attr[0]))}}));
 	{% endfor %}
-	// @formatter:on
-	}
+}
 }

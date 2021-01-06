@@ -10,6 +10,8 @@ def generate_test_helper():
         test_class = input_file.readline().strip()
         result_class = input_file.readline().strip()
         attributes = [line.strip().split()[1:3] for line in input_file]
+    for attr in attributes:
+        attr[1] = attr[1][0:-1] if attr[1].endswith(';') else attr[1]
     #print(test_class)
     #print(result_class)
     #print(attributes)
@@ -51,9 +53,13 @@ def get_value(type):
         'Integer': str(randint(1, 1000)),
         'Date': 'new Date()',
         'BigDecimal': 'new BigDecimal(' + str(randint(1, 10000)) +'.' + str(randint(1, 99)) + ')',
-        'Timestamp': 'Timestamp.valueOf(LocalDateTime.now())'
+        'Timestamp': 'Timestamp.valueOf(LocalDateTime.now())',
+        'PvTDatum': 'PvTDatum.fromISO("{}-{}-{}")'.format(randint(1980, 2020), randint(1,12), randint(1,28)),
+        'PvTBetrag': 'new PvTBetrag("{},{} EUR")'.format(randint(500, 9999), randint(10,99)),
+        'PvTWaehrung': 'PvTWaehrung.euro()'
     }
-    return switcher.get(type, 'new Helper' + type + '()')
+    xtype = type[2:] if type.startswith('Pv')else type
+    return switcher.get(type, 'new Helper' + xtype + '()')
 
 
 def get_inc_dir(class_name):
