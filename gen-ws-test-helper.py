@@ -9,12 +9,10 @@ def generate_test_helper():
     with open('test-class.txt', 'r') as input_file:
         test_class = input_file.readline().strip()
         result_class = input_file.readline().strip()
-        attributes = [line.strip().split()[1:3] for line in input_file]
-    for attr in attributes:
-        attr[1] = attr[1][0:-1] if attr[1].endswith(';') else attr[1]
+        attributes = [line.strip().split(' : ') for line in input_file]
     #print(test_class)
     #print(result_class)
-    #print(attributes)
+    print(attributes)
     test_class_inc_dir = get_inc_dir(test_class)
     result_class_inc_dir = get_inc_dir(result_class)
     helper_class_name = 'Helper' + test_class[2:] if test_class.startswith('Pv') else test_class
@@ -42,12 +40,14 @@ def get_type(type):
     return switcher.get(type, type)
 
 def get_value(type):
+    if type == 'PvEJaNeinUnbekannt':
+        return 'PvEJaNeinUnbekannt.JA' if randint(0,1) == 1 else 'PvEJaNeinUnbekannt.NEIN' if randint(0,1) == 1 else 'PvEJaNeinUnbekannt.UNBEKANNT'
     if type.startswith("PvE"):
         return type + '.'
 
     switcher = {
         'String': '"' + str(uuid.uuid4())[:8] + '"',
-        'Boolean': 'Boolean.TRUE',
+        'Boolean': 'Boolean.TRUE' if randint(0,1) == 1 else 'Boolean.FALSE',
         'Short': '(short) ' + str(randint(1, 1000)),
         'Long': str(randint(1, 1000)) + 'L',
         'Integer': str(randint(1, 1000)),
@@ -58,7 +58,7 @@ def get_value(type):
         'PvTBetrag': 'new PvTBetrag("{},{} EUR")'.format(randint(500, 9999), randint(10,99)),
         'PvTWaehrung': 'PvTWaehrung.euro()'
     }
-    xtype = type[2:] if type.startswith('Pv')else type
+    xtype = type[2:] if type.startswith('Pv') else type
     return switcher.get(type, 'new Helper' + xtype + '()')
 
 

@@ -1,5 +1,8 @@
 package de.provinzial.leistung.webservice.helper;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import {{test_class_inc_dir}}.{{test_class}};
 import {{result_class_inc_dir}}.{{result_class}};
 
@@ -12,7 +15,7 @@ public class {{helper_class_name}}
 		this.resultObject = new {{result_class}}();
 
 	{% for attr in attributes %}
-	this.addAttr(new Attr2<>("{{attr[1]}}", {{get_attr_value(get_attr_type(attr[0]))}}));
+	this.addAttr(new Attr2<>("{{attr[0]}}", {{get_attr_value(get_attr_type(attr[1]))}}));
 	{% endfor %}
 }
 }
