@@ -1,4 +1,4 @@
-PvBESchadenpartnerReparaturbetrieb
-PvTrESchadenpartnerReparaturbetrieb
-zugesteuertDurch : PvEZugesteuertDurch
-zusteuerungErfolgreich : PvEJaNeinUnbekannt
+PvTrSchadenQuerschnitt
+PvTrSchadenOberklasse
+meldedatum : PvTDatum
+schadendatum : PvTDatum

@@ -54,9 +54,10 @@ def get_value(type):
         'Date': 'new Date()',
         'BigDecimal': 'new BigDecimal(' + str(randint(1, 10000)) +'.' + str(randint(1, 99)) + ')',
         'Timestamp': 'Timestamp.valueOf(LocalDateTime.now())',
-        'PvTDatum': 'PvTDatum.fromISO("{}-{}-{}")'.format(randint(1980, 2020), randint(1,12), randint(1,28)),
+        'PvTDatum': 'PvTDatum.fromISO("{}-{:02d}-{:02d}")'.format(randint(1980, 2020), randint(1,12), randint(1,28)),
         'PvTBetrag': 'new PvTBetrag("{},{} EUR")'.format(randint(500, 9999), randint(10,99)),
-        'PvTWaehrung': 'PvTWaehrung.euro()'
+        'PvTWaehrung': 'PvTWaehrung.euro()',
+        'PvTProzentsatz': 'new PvTProzentsatz(BigDecimal.valueOf({}.{}))'.format(randint(0,99), randint(0,99))
     }
     xtype = type[2:] if type.startswith('Pv') else type
     return switcher.get(type, 'new Helper' + xtype + '()')
