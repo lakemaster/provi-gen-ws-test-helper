@@ -14,10 +14,9 @@ public class {{helper_class_name}}
 	@Override
 	public void init() {
 		this.testObject = new {{test_class}}();
-		this.resultObject = new {{result_class}}();
 
 	{% for attr in attributes %}
-	this.addAttr(new Attr2<>("{{attr[0]}}", {{get_attr_value(get_attr_type(attr[1]))}}));
+	this.addAttr(new Attr<>("{{attr[0]}}", {{get_attr_value(get_attr_type(attr[1]))}}));
 	{% endfor %}
 }
 }

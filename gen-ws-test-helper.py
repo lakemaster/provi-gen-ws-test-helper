@@ -51,6 +51,7 @@ def get_value(type):
         'Short': '(short) ' + str(randint(1, 1000)),
         'Long': str(randint(1, 1000)) + 'L',
         'Integer': str(randint(1, 1000)),
+        'Double': str(randint(1, 1000)) + '.' + str(randint(1, 99)) + 'd',
         'Date': 'new Date()',
         'BigDecimal': 'new BigDecimal(' + str(randint(1, 10000)) +'.' + str(randint(1, 99)) + ')',
         'Timestamp': 'Timestamp.valueOf(LocalDateTime.now())',

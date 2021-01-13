@@ -1,4 +1,17 @@
-PvTrSchadenQuerschnitt
-PvTrSchadenOberklasse
-meldedatum : PvTDatum
-schadendatum : PvTDatum
+PvBEAllgemeinUnfallSchadenDetail
+PvTrEAllgemeinUnfallSchadenDetail
+alkoholInnerhalb24h : PvEJaNeinUnbekannt
+beiBerufsgenossenschaftGemeldet : PvEJaNeinUnbekannt
+betriebsunfall : PvEJaNeinUnbekannt
+blutprobe : PvEJaNeinUnbekannt
+blutprobePromille : Double
+dauerDerArbeitsunfaehigkeit : String
+heilungsverlauf : String
+koerperlicheBehinderung : PvEJaNeinUnbekannt
+komplikationen : String
+meldungBeiKrankenkasse : PvEJaNeinUnbekannt
+stationaererKrankenhausaufenthalt : PvEJaNeinUnbekannt
+taetigkeitBeiUnfall : String
+verletzung : String
+vorerkrankungen : PvEJaNeinUnbekannt
+wegeUnfall : PvEJaNeinUnbekannt
