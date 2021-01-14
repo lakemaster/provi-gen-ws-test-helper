@@ -7,28 +7,54 @@ import uuid
 
 def generate_test_helper():
     with open('test-class.txt', 'r') as input_file:
-        test_class = input_file.readline().strip()
-        result_class = input_file.readline().strip()
+        abstract = input_file.readline().strip() == 'A'
+        test_class, test_super_class = two(input_file.readline().strip().split())
+        result_class, result_super_class = two(input_file.readline().strip().split())
         attributes = [line.strip().split(' : ') for line in input_file]
-    #print(test_class)
-    #print(result_class)
+    print(test_class, test_super_class)
+    print(result_class, result_super_class)
     print(attributes)
     test_class_inc_dir = get_inc_dir(test_class)
     result_class_inc_dir = get_inc_dir(result_class)
     helper_class_name = 'Helper' + test_class[2:] if test_class.startswith('Pv') else test_class
+    helper_class_name_ext = ''
+    call_super_init = False
+    if abstract:
+        helper_class_name = 'Abstract' + helper_class_name
+        helper_class_name_ext = '<T extends ' + test_class + ', R extends ' + result_class + '>'
+    if test_super_class is None:
+        helper_super_class_name = 'Helper<' + test_class + ', ' + result_class + '>'
+    else:
+        call_super_init = True
+        tmp = test_super_class[2:] if test_super_class.startswith('Pv') else test_super_class
+        if abstract:
+            helper_super_class_name = 'AbstractHelper' + tmp + '<T, R>'
+        else:
+            helper_super_class_name = 'AbstractHelper' + tmp + '<' + test_class + ', ' + result_class + '>'
+
     java_test_class_file = open(helper_class_name + '.java', 'w')
     j2_env = Environment(loader=FileSystemLoader(THIS_DIR), trim_blocks=True)
     java_test_class_file.write(j2_env.get_template('helper.tmpl').render(
-            helper_class_name=helper_class_name,
+            helper_class_name=helper_class_name + helper_class_name_ext,
+            helper_super_class_name=helper_super_class_name,
             test_class=test_class,
+            test_super_class=test_super_class,
             result_class=result_class,
+            result_super_class=result_super_class,
             attributes=attributes,
             test_class_inc_dir=test_class_inc_dir,
             result_class_inc_dir=result_class_inc_dir,
             get_attr_type=get_type,
-            get_attr_value=get_value
+            get_attr_value=get_value,
+            call_super_init=call_super_init
     ))
     java_test_class_file.close()
+
+def two(elements):
+    if len(elements) == 1:
+        return [elements[0], None]
+    else:
+        return elements
 
 def get_type(type):
     switcher = {
