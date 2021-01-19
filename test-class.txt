@@ -1,14 +1,7 @@
-X
-PvBEZahlungsposition
-PvTrEZahlungsposition
-anzahl : Double
-betragAbzug : BigDecimal
-betragAbzugBruttoNetto : Boolean
-bezeichnung : String
-einheit : PvEEinheit
-grundFuerAbzug : String
-leistungsart : String
-mehrwertsteuersatz : PvEMehrwertsteuersatz
-preisProEinheit : BigDecimal
-preisProEinheitBrutto : Boolean
-summeBruttoNetto : Boolean
+A
+PvTrRueckgabe
+PvBRueckgabeLeistungAbstract
+fehlergrund : PvEFehlergrund
+infoPartnerdubletten : Map<String, Set<String>>
+meldungen : List<PvTrMeldung>
+status : PvETrRueckgabeStatus
