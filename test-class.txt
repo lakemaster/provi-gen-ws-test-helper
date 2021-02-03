@@ -1,7 +1,46 @@
-A
-PvTrRueckgabe
-PvBRueckgabeLeistungAbstract
-fehlergrund : PvEFehlergrund
-infoPartnerdubletten : Map<String, Set<String>>
-meldungen : List<PvTrMeldung>
-status : PvETrRueckgabeStatus
+X
+PvMSchaden
+PvBRSchaden
+amtlichesKennzeichen : String
+anlageSystem : PvEAnlageSystem
+anspruchstellerNummer : String
+artDerVerletzung : PvBWerteEintrag
+belastungsjahr : short
+dauerfolgen : String
+dauerfolgenInProzent : BigDecimal
+deckungskapital : BigDecimal
+haftung : short
+herkunftKennzeichen : PvBWerteEintrag
+ivg : PvBWerteEintrag
+meldedatum : Date
+personenschaden : boolean
+produktgeber : Integer
+rabattschutz : String
+reserveAktiv : BigDecimal
+reservePassiv : BigDecimal
+risikobereich : PvBWerteEintrag
+risikobeschreibungOderSchadenortStrasse : String
+rolle : PvBWerteEintrag
+routing : Short
+sachbearbeiterFirmaAbteilung : String
+sachbearbeiterKuerzel : String
+sachbearbeiterUserId : String
+schadenart : PvBWerteEintrag
+schadenauspraegung : short
+schadenbelastung : PvBWerteEintrag
+schadendatum : Date
+schadennummer : PvBRSchadennummerExtern
+schadenspartennummer : PvESchadenspartennummer
+schadenspartennummerPnw : PvESchadenspartennummer
+schadenstatus : PvESchadenStatus
+segmentIdCode : String
+summeBelastendeZahlung : BigDecimal
+summeZahlungen : BigDecimal
+ursache : PvBWerteEintrag
+vermittlernummer : int
+versicherungsnehmerNummer : String
+versicherungsscheinnummer : String
+vertragAnwendungsCode : String
+vertragVersicherungszweigKey : String
+verwaltungsunternehmen : Short
+waehrungszustand : String

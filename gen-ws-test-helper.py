@@ -84,6 +84,7 @@ def get_value(type):
         'Date': 'new Date()',
         'BigDecimal': 'new BigDecimal(' + str(randint(1, 10000)) +'.' + str(randint(1, 99)) + ')',
         'Timestamp': 'Timestamp.valueOf(LocalDateTime.now())',
+        'PvTDatumUhrzeit': 'PvTDatumUhrzeit.jetzt()',
         'PvTDatum': 'PvTDatum.fromISO("{}-{:02d}-{:02d}")'.format(randint(1980, 2020), randint(1,12), randint(1,28)),
         'PvTBetrag': 'new PvTBetrag("{},{} EUR")'.format(randint(500, 9999), randint(10,99)),
         'PvTWaehrung': 'PvTWaehrung.euro()',

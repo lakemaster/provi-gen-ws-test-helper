@@ -14,6 +14,7 @@ public class {{helper_class_name}}
 	@Override
 	public void init() {
 		{% if create_test_object %}this.testObject = new {{test_class}}();{% endif %}
+
 		{% if call_super_init %}super.init();{% endif %}
 
 	{% for attr in attributes %}
